@@ -1,5 +1,7 @@
 # Vents dla Home Assistant
 
+![Vents](custom_components/vents_a21/brand/logo.png)
+
 Lokalna integracja Modbus TCP dla sterowników **Vents A21**, przygotowana dla mapy **VUT 400 HBE EC A21**. Konfiguracja z interfejsu HA, bez konta w chmurze.
 
 ## Instalacja HACS

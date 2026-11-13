@@ -1,5 +1,7 @@
 # Vents for Home Assistant
 
+![Vents](custom_components/vents_a21/brand/logo.png)
+
 Local Modbus TCP integration for **Vents A21** ventilation controllers, prepared for the **VUT 400 HBE EC A21** register map. Configure it in Home Assistant without YAML or a cloud account.
 
 [Polska instrukcja](README.pl.md) · [Entities and registers](docs/registers.md) · [Migration from YAML](docs/migration.md)

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Use the official Vents brand emblem for the integration icon and include the full Vents wordmark as the integration logo.
+- Preserve the manufacturer's source artwork and document its origin.
+
 ## 0.1.0
 
 - Initial Vents A21 Modbus TCP integration, prepared for VUT 400 HBE EC A21.
