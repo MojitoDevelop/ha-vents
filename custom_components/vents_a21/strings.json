@@ -1,0 +1,426 @@
+{
+  "title": "Vents",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect to Vents A21",
+        "description": "Enter the local Modbus TCP endpoint. Remove the old Modbus YAML hub and restart Home Assistant before connecting. The controller supports one TCP client per network interface. Setup only reads controller identity; it does not change settings.",
+        "data": {
+          "host": "IP address or hostname",
+          "port": "Port",
+          "unit_id": "Modbus unit ID"
+        },
+        "data_description": {
+          "unit_id": "A21 controller address, 1–16; default 1."
+        }
+      },
+      "reconfigure": {
+        "title": "Connect to Vents A21",
+        "description": "Enter the local Modbus TCP endpoint. Remove the old Modbus YAML hub and restart Home Assistant before connecting. The controller supports one TCP client per network interface. Setup only reads controller identity; it does not change settings.",
+        "data": {
+          "host": "IP address or hostname",
+          "port": "Port",
+          "unit_id": "Modbus unit ID"
+        },
+        "data_description": {
+          "unit_id": "A21 controller address, 1–16; default 1."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot read the controller. Check the endpoint and remove other Modbus clients.",
+      "unsupported_controller": "This device does not identify as an A21 controller (input register 37 must equal 1).",
+      "invalid_host": "Enter an IP address or hostname without a URL scheme.",
+      "unknown": "Unexpected error. Check the Home Assistant log."
+    },
+    "abort": {
+      "already_configured": "This endpoint is already configured.",
+      "reconfigure_successful": "Connection settings updated."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Vents options",
+        "description": "Enable only sensors fitted to your unit. These options expose entities; they do not activate sensor inputs in the controller.",
+        "data": {
+          "poll_interval": "Update interval (seconds)",
+          "timeout": "Response timeout (seconds)",
+          "connect_delay": "Delay after connecting (seconds)",
+          "optional_sensors": "Optional sensors"
+        }
+      }
+    }
+  },
+  "selector": {
+    "optional_sensors": {
+      "options": {
+        "humidity": "Humidity",
+        "co2": "CO₂",
+        "pm25": "PM2.5",
+        "voc": "VOC",
+        "airflow": "Airflow",
+        "pressure": "Duct pressure",
+        "rpm": "Fan RPM",
+        "extra_temperature": "Additional temperatures"
+      }
+    }
+  },
+  "entity": {
+    "fan": {
+      "ventilation": {
+        "name": "Ventilation",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "speed_1": "Speed 1",
+              "speed_2": "Speed 2",
+              "speed_3": "Speed 3",
+              "speed_4": "Speed 4",
+              "speed_5": "Speed 5",
+              "manual": "Manual"
+            }
+          }
+        }
+      }
+    },
+    "climate": {
+      "climate": {
+        "name": "Temperature control"
+      }
+    },
+    "select": {
+      "bypass_mode": {
+        "name": "Bypass mode",
+        "state": {
+          "closed": "Closed",
+          "open": "Open",
+          "manual": "Manual",
+          "auto": "Automatic"
+        }
+      },
+      "timer_speed": {
+        "name": "Timer speed",
+        "state": {
+          "speed_1": "Speed 1",
+          "speed_2": "Speed 2",
+          "speed_3": "Speed 3",
+          "speed_4": "Speed 4",
+          "speed_5": "Speed 5",
+          "standby": "Standby"
+        }
+      }
+    },
+    "switch": {
+      "timer": {
+        "name": "Timer"
+      },
+      "weekly_schedule": {
+        "name": "Weekly schedule"
+      }
+    },
+    "button": {
+      "reset_filter_timer": {
+        "name": "Reset filter timer"
+      },
+      "reset_alarms": {
+        "name": "Reset alarms"
+      }
+    },
+    "binary_sensor": {
+      "boost_active": {
+        "name": "Boost active"
+      },
+      "fireplace_active": {
+        "name": "Fireplace active"
+      },
+      "heater_active": {
+        "name": "Heater active"
+      },
+      "heater_cooldown": {
+        "name": "Heater cooldown"
+      },
+      "supply_filter_clogged": {
+        "name": "Supply filter clogged"
+      },
+      "extract_filter_clogged": {
+        "name": "Extract filter clogged"
+      },
+      "alarm": {
+        "name": "Alarm or warning"
+      }
+    },
+    "number": {
+      "manual_speed": {
+        "name": "Manual speed"
+      },
+      "bypass_position_setpoint": {
+        "name": "Bypass position setpoint"
+      },
+      "target_temperature": {
+        "name": "Target temperature"
+      },
+      "timer_duration": {
+        "name": "Timer duration"
+      },
+      "timer_temperature": {
+        "name": "Timer temperature"
+      },
+      "filter_timer_period": {
+        "name": "Filter replacement interval"
+      },
+      "humidity_setpoint": {
+        "name": "Humidity threshold"
+      },
+      "co2_setpoint": {
+        "name": "CO₂ threshold"
+      },
+      "pm25_setpoint": {
+        "name": "PM2.5 threshold"
+      },
+      "voc_setpoint": {
+        "name": "VOC threshold"
+      },
+      "speed_1_supply_output": {
+        "name": "Speed 1 supply output"
+      },
+      "speed_1_supply_airflow": {
+        "name": "Speed 1 supply airflow"
+      },
+      "speed_1_extract_output": {
+        "name": "Speed 1 extract output"
+      },
+      "speed_1_extract_airflow": {
+        "name": "Speed 1 extract airflow"
+      },
+      "speed_2_supply_output": {
+        "name": "Speed 2 supply output"
+      },
+      "speed_2_supply_airflow": {
+        "name": "Speed 2 supply airflow"
+      },
+      "speed_2_extract_output": {
+        "name": "Speed 2 extract output"
+      },
+      "speed_2_extract_airflow": {
+        "name": "Speed 2 extract airflow"
+      },
+      "speed_3_supply_output": {
+        "name": "Speed 3 supply output"
+      },
+      "speed_3_supply_airflow": {
+        "name": "Speed 3 supply airflow"
+      },
+      "speed_3_extract_output": {
+        "name": "Speed 3 extract output"
+      },
+      "speed_3_extract_airflow": {
+        "name": "Speed 3 extract airflow"
+      },
+      "speed_4_supply_output": {
+        "name": "Speed 4 supply output"
+      },
+      "speed_4_supply_airflow": {
+        "name": "Speed 4 supply airflow"
+      },
+      "speed_4_extract_output": {
+        "name": "Speed 4 extract output"
+      },
+      "speed_4_extract_airflow": {
+        "name": "Speed 4 extract airflow"
+      },
+      "speed_5_supply_output": {
+        "name": "Speed 5 supply output"
+      },
+      "speed_5_supply_airflow": {
+        "name": "Speed 5 supply airflow"
+      },
+      "speed_5_extract_output": {
+        "name": "Speed 5 extract output"
+      },
+      "speed_5_extract_airflow": {
+        "name": "Speed 5 extract airflow"
+      }
+    },
+    "sensor": {
+      "control_temperature": {
+        "name": "Control temperature"
+      },
+      "outdoor_air_temperature": {
+        "name": "Outdoor air temperature"
+      },
+      "supply_air_temperature": {
+        "name": "Supply air temperature"
+      },
+      "extract_air_temperature": {
+        "name": "Extract air temperature"
+      },
+      "exhaust_air_temperature": {
+        "name": "Exhaust air temperature"
+      },
+      "manual_speed_setpoint": {
+        "name": "Manual speed setpoint"
+      },
+      "temperature_setpoint": {
+        "name": "Temperature setpoint"
+      },
+      "bypass_setpoint": {
+        "name": "Bypass setpoint"
+      },
+      "speed_mode": {
+        "name": "Speed mode register"
+      },
+      "bypass_mode_raw": {
+        "name": "Bypass mode register"
+      },
+      "bypass_position": {
+        "name": "Reported bypass position"
+      },
+      "supply_fan_output": {
+        "name": "Supply fan output"
+      },
+      "extract_fan_output": {
+        "name": "Extract fan output"
+      },
+      "heater_control_signal": {
+        "name": "Heater control signal"
+      },
+      "filter_status": {
+        "name": "Filter status",
+        "state": {
+          "clean": "Clean",
+          "supply": "Supply filter",
+          "extract": "Extract filter",
+          "both_or_timer": "Both filters or timer expired"
+        }
+      },
+      "filter_time_remaining": {
+        "name": "Filter replacement countdown"
+      },
+      "operating_time": {
+        "name": "Operating time"
+      },
+      "timer_time_remaining": {
+        "name": "Timer remaining"
+      },
+      "alarm_status": {
+        "name": "Alarm status",
+        "state": {
+          "none": "No alarms",
+          "alarm": "Alarm",
+          "warning": "Warning"
+        }
+      },
+      "active_alarm": {
+        "name": "Active alarm",
+        "state": {
+          "none": "No active alarms",
+          "code_0": "Supply fan fault",
+          "code_1": "Extract fan fault",
+          "code_2": "Outdoor temperature sensor missing",
+          "code_3": "Outdoor temperature sensor shorted",
+          "code_4": "Supply temperature sensor missing",
+          "code_5": "Supply temperature sensor shorted",
+          "code_6": "Extract temperature sensor missing",
+          "code_7": "Extract temperature sensor shorted",
+          "code_8": "Exhaust temperature sensor missing",
+          "code_9": "Exhaust temperature sensor shorted",
+          "code_10": "Preheater thermostat trip",
+          "code_11": "Main heater thermostat trip",
+          "code_12": "Preheater frost protection failed",
+          "code_13": "Main humidity sensor missing",
+          "code_14": "Main CO2 sensor missing",
+          "code_15": "Main PM2.5 sensor missing",
+          "code_16": "Main VOC sensor missing",
+          "code_17": "External humidity sensor missing",
+          "code_18": "External CO2 sensor missing",
+          "code_19": "External PM2.5 sensor missing",
+          "code_20": "External VOC sensor missing",
+          "code_21": "Room temperature sensor unavailable",
+          "code_22": "Heat exchanger frost risk",
+          "code_23": "Clock battery low",
+          "code_24": "Supply filter needs replacement",
+          "code_25": "Fire alarm input triggered",
+          "code_26": "Supply temperature too low",
+          "code_27": "Return water sensor missing",
+          "code_28": "Return water sensor shorted",
+          "code_29": "Extract filter needs replacement",
+          "code_30": "Water pressure absent",
+          "code_31": "Water flow absent",
+          "code_32": "Return water temperature too low",
+          "code_33": "Supply fan frost protection failed",
+          "code_34": "Bypass frost protection failed",
+          "code_35": "Frost protection disabled",
+          "code_36": "Main heater in manual mode",
+          "code_37": "Cooler in manual mode",
+          "code_38": "Bypass in manual mode",
+          "code_39": "Rotor in manual mode",
+          "code_40": "Filter replacement timer expired",
+          "code_41": "Rotor operation fault",
+          "code_42": "Preheater in manual mode",
+          "code_43": "Water warm-up timed out",
+          "code_44": "Frost protection changed to supply fan",
+          "code_45": "Fireplace mode locked",
+          "code_46": "Alarm 46",
+          "code_47": "Alarm 47",
+          "code_48": "Alarm 48",
+          "code_49": "Alarm 49",
+          "code_50": "Alarm 50",
+          "code_51": "Alarm 51",
+          "code_52": "Alarm 52"
+        }
+      },
+      "internal_humidity": {
+        "name": "Internal humidity"
+      },
+      "external_humidity": {
+        "name": "External humidity"
+      },
+      "internal_co2": {
+        "name": "Internal CO₂"
+      },
+      "external_co2": {
+        "name": "External CO₂"
+      },
+      "internal_pm25": {
+        "name": "Internal PM2.5"
+      },
+      "external_pm25": {
+        "name": "External PM2.5"
+      },
+      "internal_voc": {
+        "name": "Internal VOC"
+      },
+      "external_voc": {
+        "name": "External VOC"
+      },
+      "supply_airflow": {
+        "name": "Supply airflow"
+      },
+      "extract_airflow": {
+        "name": "Extract airflow"
+      },
+      "supply_pressure": {
+        "name": "Supply duct pressure"
+      },
+      "extract_pressure": {
+        "name": "Extract duct pressure"
+      },
+      "supply_fan_speed": {
+        "name": "Supply fan speed"
+      },
+      "extract_fan_speed": {
+        "name": "Extract fan speed"
+      },
+      "external_temperature": {
+        "name": "External temperature"
+      },
+      "after_preheater_temperature": {
+        "name": "Temperature after preheater"
+      },
+      "before_reheater_temperature": {
+        "name": "Temperature before reheater"
+      }
+    }
+  }
+}

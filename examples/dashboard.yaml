@@ -1,0 +1,27 @@
+type: vertical-stack
+cards:
+  - type: thermostat
+    entity: climate.vents_climate
+  - type: entities
+    entities:
+      - fan.vents_ventilation
+      - number.vents_manual_speed
+      - select.vents_bypass_mode
+      - number.vents_bypass_position_setpoint
+      - sensor.vents_outdoor_air_temperature
+      - sensor.vents_supply_air_temperature
+      - sensor.vents_extract_air_temperature
+      - sensor.vents_exhaust_air_temperature
+      - sensor.vents_supply_fan_output
+      - sensor.vents_extract_fan_output
+  - type: entities
+    entities:
+      - switch.vents_timer
+      - number.vents_timer_duration
+      - select.vents_timer_speed
+      - number.vents_timer_temperature
+      - switch.vents_weekly_schedule
+      - sensor.vents_filter_status
+      - sensor.vents_filter_time_remaining
+      - sensor.vents_active_alarm
+      - binary_sensor.vents_alarm

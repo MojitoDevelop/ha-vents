@@ -1,0 +1,79 @@
+name: Validate and release
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        home-assistant: ["2026.10.0", "2026.11.1"]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+          cache: pip
+      - run: python -m pip install -r requirements_test.txt
+      - run: python -m pip install "homeassistant==${{ matrix.home-assistant }}"
+      - run: python scripts/test.py
+      - run: ruff check .
+      - run: ruff format --check .
+
+  hassfest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: home-assistant/actions/hassfest@master
+
+  hacs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: hacs/action@main
+        with:
+          category: integration
+          comment: false
+
+  release:
+    needs: [tests, hassfest, hacs]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: release-main
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.14"
+      - name: Build archive
+        id: package
+        run: python scripts/build_release.py --github-output "$GITHUB_OUTPUT"
+      - name: Publish versioned release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ steps.package.outputs.tag }}
+          RELEASE_COMMIT: ${{ github.sha }}
+          RELEASE_ARCHIVE: ${{ steps.package.outputs.archive }}
+          RELEASE_CHECKSUM: ${{ steps.package.outputs.checksum }}
+          RELEASE_NOTES: ${{ steps.package.outputs.notes }}
+        run: |
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release $RELEASE_TAG already exists."
+          else
+            gh release create "$RELEASE_TAG" "$RELEASE_ARCHIVE" "$RELEASE_CHECKSUM" \
+              --target "$RELEASE_COMMIT" --title "$RELEASE_TAG" \
+              --notes-file "$RELEASE_NOTES"
+          fi

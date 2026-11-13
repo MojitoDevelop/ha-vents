@@ -1,0 +1,266 @@
+{
+  "entity": {
+    "fan": {
+      "ventilation": {
+        "default": "mdi:fan"
+      }
+    },
+    "climate": {
+      "climate": {
+        "default": "mdi:air-conditioner"
+      }
+    },
+    "select": {
+      "bypass_mode": {
+        "default": "mdi:swap-horizontal"
+      },
+      "timer_speed": {
+        "default": "mdi:timer-outline"
+      }
+    },
+    "switch": {
+      "timer": {
+        "default": "mdi:timer-outline"
+      },
+      "weekly_schedule": {
+        "default": "mdi:swap-horizontal"
+      }
+    },
+    "button": {
+      "reset_filter_timer": {
+        "default": "mdi:air-filter"
+      },
+      "reset_alarms": {
+        "default": "mdi:alert-circle-outline"
+      }
+    },
+    "binary_sensor": {
+      "boost_active": {
+        "default": "mdi:swap-horizontal"
+      },
+      "fireplace_active": {
+        "default": "mdi:swap-horizontal"
+      },
+      "heater_active": {
+        "default": "mdi:swap-horizontal"
+      },
+      "heater_cooldown": {
+        "default": "mdi:swap-horizontal"
+      },
+      "supply_filter_clogged": {
+        "default": "mdi:air-filter"
+      },
+      "extract_filter_clogged": {
+        "default": "mdi:air-filter"
+      },
+      "alarm": {
+        "default": "mdi:alert-circle-outline"
+      }
+    },
+    "number": {
+      "manual_speed": {
+        "default": "mdi:swap-horizontal"
+      },
+      "bypass_position_setpoint": {
+        "default": "mdi:swap-horizontal"
+      },
+      "target_temperature": {
+        "default": "mdi:swap-horizontal"
+      },
+      "timer_duration": {
+        "default": "mdi:timer-outline"
+      },
+      "timer_temperature": {
+        "default": "mdi:timer-outline"
+      },
+      "filter_timer_period": {
+        "default": "mdi:air-filter"
+      },
+      "humidity_setpoint": {
+        "default": "mdi:swap-horizontal"
+      },
+      "co2_setpoint": {
+        "default": "mdi:swap-horizontal"
+      },
+      "pm25_setpoint": {
+        "default": "mdi:swap-horizontal"
+      },
+      "voc_setpoint": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_1_supply_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_1_supply_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_1_extract_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_1_extract_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_2_supply_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_2_supply_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_2_extract_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_2_extract_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_3_supply_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_3_supply_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_3_extract_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_3_extract_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_4_supply_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_4_supply_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_4_extract_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_4_extract_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_5_supply_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_5_supply_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_5_extract_output": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_5_extract_airflow": {
+        "default": "mdi:swap-horizontal"
+      }
+    },
+    "sensor": {
+      "control_temperature": {
+        "default": "mdi:swap-horizontal"
+      },
+      "outdoor_air_temperature": {
+        "default": "mdi:swap-horizontal"
+      },
+      "supply_air_temperature": {
+        "default": "mdi:swap-horizontal"
+      },
+      "extract_air_temperature": {
+        "default": "mdi:swap-horizontal"
+      },
+      "exhaust_air_temperature": {
+        "default": "mdi:swap-horizontal"
+      },
+      "manual_speed_setpoint": {
+        "default": "mdi:swap-horizontal"
+      },
+      "temperature_setpoint": {
+        "default": "mdi:swap-horizontal"
+      },
+      "bypass_setpoint": {
+        "default": "mdi:swap-horizontal"
+      },
+      "speed_mode": {
+        "default": "mdi:swap-horizontal"
+      },
+      "bypass_mode_raw": {
+        "default": "mdi:swap-horizontal"
+      },
+      "bypass_position": {
+        "default": "mdi:swap-horizontal"
+      },
+      "supply_fan_output": {
+        "default": "mdi:fan"
+      },
+      "extract_fan_output": {
+        "default": "mdi:fan"
+      },
+      "heater_control_signal": {
+        "default": "mdi:swap-horizontal"
+      },
+      "filter_status": {
+        "default": "mdi:air-filter"
+      },
+      "filter_time_remaining": {
+        "default": "mdi:air-filter"
+      },
+      "operating_time": {
+        "default": "mdi:swap-horizontal"
+      },
+      "timer_time_remaining": {
+        "default": "mdi:timer-outline"
+      },
+      "alarm_status": {
+        "default": "mdi:alert-circle-outline"
+      },
+      "active_alarm": {
+        "default": "mdi:alert-circle-outline"
+      },
+      "internal_humidity": {
+        "default": "mdi:swap-horizontal"
+      },
+      "external_humidity": {
+        "default": "mdi:swap-horizontal"
+      },
+      "internal_co2": {
+        "default": "mdi:swap-horizontal"
+      },
+      "external_co2": {
+        "default": "mdi:swap-horizontal"
+      },
+      "internal_pm25": {
+        "default": "mdi:swap-horizontal"
+      },
+      "external_pm25": {
+        "default": "mdi:swap-horizontal"
+      },
+      "internal_voc": {
+        "default": "mdi:swap-horizontal"
+      },
+      "external_voc": {
+        "default": "mdi:swap-horizontal"
+      },
+      "supply_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "extract_airflow": {
+        "default": "mdi:swap-horizontal"
+      },
+      "supply_pressure": {
+        "default": "mdi:swap-horizontal"
+      },
+      "extract_pressure": {
+        "default": "mdi:swap-horizontal"
+      },
+      "supply_fan_speed": {
+        "default": "mdi:fan"
+      },
+      "extract_fan_speed": {
+        "default": "mdi:fan"
+      },
+      "external_temperature": {
+        "default": "mdi:swap-horizontal"
+      },
+      "after_preheater_temperature": {
+        "default": "mdi:swap-horizontal"
+      },
+      "before_reheater_temperature": {
+        "default": "mdi:swap-horizontal"
+      }
+    }
+  }
+}

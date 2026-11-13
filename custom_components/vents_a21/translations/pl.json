@@ -1,0 +1,426 @@
+{
+  "title": "Vents",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Połącz z Vents A21",
+        "description": "Podaj adres lokalnego połączenia Modbus TCP. Przed połączeniem usuń stary hub Modbus z YAML i uruchom ponownie Home Assistant. Sterownik obsługuje jednego klienta TCP na interfejs sieciowy. Konfiguracja tylko odczytuje typ sterownika i nie zmienia nastaw.",
+        "data": {
+          "host": "Adres IP lub nazwa hosta",
+          "port": "Port",
+          "unit_id": "Adres urządzenia Modbus"
+        },
+        "data_description": {
+          "unit_id": "Adres sterownika A21, 1–16; domyślnie 1."
+        }
+      },
+      "reconfigure": {
+        "title": "Połącz z Vents A21",
+        "description": "Podaj adres lokalnego połączenia Modbus TCP. Przed połączeniem usuń stary hub Modbus z YAML i uruchom ponownie Home Assistant. Sterownik obsługuje jednego klienta TCP na interfejs sieciowy. Konfiguracja tylko odczytuje typ sterownika i nie zmienia nastaw.",
+        "data": {
+          "host": "Adres IP lub nazwa hosta",
+          "port": "Port",
+          "unit_id": "Adres urządzenia Modbus"
+        },
+        "data_description": {
+          "unit_id": "Adres sterownika A21, 1–16; domyślnie 1."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie można odczytać sterownika. Sprawdź połączenie i wyłącz innych klientów Modbus.",
+      "unsupported_controller": "Urządzenie nie identyfikuje się jako sterownik A21 (rejestr wejściowy 37 musi mieć wartość 1).",
+      "invalid_host": "Podaj adres IP lub nazwę hosta bez prefiksu URL.",
+      "unknown": "Nieoczekiwany błąd. Sprawdź dziennik Home Assistant."
+    },
+    "abort": {
+      "already_configured": "To połączenie jest już skonfigurowane.",
+      "reconfigure_successful": "Zaktualizowano ustawienia połączenia."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Opcje Vents",
+        "description": "Włącz tylko czujniki zamontowane w centrali. Te opcje udostępniają encje; nie aktywują wejść czujników w sterowniku.",
+        "data": {
+          "poll_interval": "Interwał odczytu (sekundy)",
+          "timeout": "Limit oczekiwania na odpowiedź (sekundy)",
+          "connect_delay": "Opóźnienie po połączeniu (sekundy)",
+          "optional_sensors": "Opcjonalne czujniki"
+        }
+      }
+    }
+  },
+  "selector": {
+    "optional_sensors": {
+      "options": {
+        "humidity": "Wilgotność",
+        "co2": "CO₂",
+        "pm25": "PM2.5",
+        "voc": "LZO",
+        "airflow": "Przepływ powietrza",
+        "pressure": "Ciśnienie w kanałach",
+        "rpm": "Obroty wentylatorów",
+        "extra_temperature": "Dodatkowe temperatury"
+      }
+    }
+  },
+  "entity": {
+    "fan": {
+      "ventilation": {
+        "name": "Wentylacja",
+        "state_attributes": {
+          "preset_mode": {
+            "state": {
+              "speed_1": "Bieg 1",
+              "speed_2": "Bieg 2",
+              "speed_3": "Bieg 3",
+              "speed_4": "Bieg 4",
+              "speed_5": "Bieg 5",
+              "manual": "Ręczny"
+            }
+          }
+        }
+      }
+    },
+    "climate": {
+      "climate": {
+        "name": "Regulacja temperatury"
+      }
+    },
+    "select": {
+      "bypass_mode": {
+        "name": "Tryb bypassu",
+        "state": {
+          "closed": "Zamknięty",
+          "open": "Otwarty",
+          "manual": "Ręczny",
+          "auto": "Automatyczny"
+        }
+      },
+      "timer_speed": {
+        "name": "Bieg timera",
+        "state": {
+          "speed_1": "Bieg 1",
+          "speed_2": "Bieg 2",
+          "speed_3": "Bieg 3",
+          "speed_4": "Bieg 4",
+          "speed_5": "Bieg 5",
+          "standby": "Czuwanie"
+        }
+      }
+    },
+    "switch": {
+      "timer": {
+        "name": "Timer"
+      },
+      "weekly_schedule": {
+        "name": "Harmonogram tygodniowy"
+      }
+    },
+    "button": {
+      "reset_filter_timer": {
+        "name": "Wyzeruj licznik filtrów"
+      },
+      "reset_alarms": {
+        "name": "Skasuj alarmy"
+      }
+    },
+    "binary_sensor": {
+      "boost_active": {
+        "name": "Aktywny Boost"
+      },
+      "fireplace_active": {
+        "name": "Aktywny tryb Kominek"
+      },
+      "heater_active": {
+        "name": "Praca nagrzewnicy"
+      },
+      "heater_cooldown": {
+        "name": "Wychładzanie nagrzewnicy"
+      },
+      "supply_filter_clogged": {
+        "name": "Zanieczyszczenie filtra nawiewu"
+      },
+      "extract_filter_clogged": {
+        "name": "Zanieczyszczenie filtra wywiewu"
+      },
+      "alarm": {
+        "name": "Alarm lub ostrzeżenie"
+      }
+    },
+    "number": {
+      "manual_speed": {
+        "name": "Prędkość ręczna"
+      },
+      "bypass_position_setpoint": {
+        "name": "Zadane otwarcie bypassu"
+      },
+      "target_temperature": {
+        "name": "Temperatura zadana"
+      },
+      "timer_duration": {
+        "name": "Czas timera"
+      },
+      "timer_temperature": {
+        "name": "Temperatura timera"
+      },
+      "filter_timer_period": {
+        "name": "Okres wymiany filtrów"
+      },
+      "humidity_setpoint": {
+        "name": "Próg wilgotności"
+      },
+      "co2_setpoint": {
+        "name": "Próg CO₂"
+      },
+      "pm25_setpoint": {
+        "name": "Próg PM2.5"
+      },
+      "voc_setpoint": {
+        "name": "Próg LZO"
+      },
+      "speed_1_supply_output": {
+        "name": "Wysterowanie nawiewu na biegu 1"
+      },
+      "speed_1_supply_airflow": {
+        "name": "Przepływ nawiewu na biegu 1"
+      },
+      "speed_1_extract_output": {
+        "name": "Wysterowanie wywiewu na biegu 1"
+      },
+      "speed_1_extract_airflow": {
+        "name": "Przepływ wywiewu na biegu 1"
+      },
+      "speed_2_supply_output": {
+        "name": "Wysterowanie nawiewu na biegu 2"
+      },
+      "speed_2_supply_airflow": {
+        "name": "Przepływ nawiewu na biegu 2"
+      },
+      "speed_2_extract_output": {
+        "name": "Wysterowanie wywiewu na biegu 2"
+      },
+      "speed_2_extract_airflow": {
+        "name": "Przepływ wywiewu na biegu 2"
+      },
+      "speed_3_supply_output": {
+        "name": "Wysterowanie nawiewu na biegu 3"
+      },
+      "speed_3_supply_airflow": {
+        "name": "Przepływ nawiewu na biegu 3"
+      },
+      "speed_3_extract_output": {
+        "name": "Wysterowanie wywiewu na biegu 3"
+      },
+      "speed_3_extract_airflow": {
+        "name": "Przepływ wywiewu na biegu 3"
+      },
+      "speed_4_supply_output": {
+        "name": "Wysterowanie nawiewu na biegu 4"
+      },
+      "speed_4_supply_airflow": {
+        "name": "Przepływ nawiewu na biegu 4"
+      },
+      "speed_4_extract_output": {
+        "name": "Wysterowanie wywiewu na biegu 4"
+      },
+      "speed_4_extract_airflow": {
+        "name": "Przepływ wywiewu na biegu 4"
+      },
+      "speed_5_supply_output": {
+        "name": "Wysterowanie nawiewu na biegu 5"
+      },
+      "speed_5_supply_airflow": {
+        "name": "Przepływ nawiewu na biegu 5"
+      },
+      "speed_5_extract_output": {
+        "name": "Wysterowanie wywiewu na biegu 5"
+      },
+      "speed_5_extract_airflow": {
+        "name": "Przepływ wywiewu na biegu 5"
+      }
+    },
+    "sensor": {
+      "control_temperature": {
+        "name": "Temperatura czujnika regulacyjnego"
+      },
+      "outdoor_air_temperature": {
+        "name": "Temperatura czerpni"
+      },
+      "supply_air_temperature": {
+        "name": "Temperatura nawiewu"
+      },
+      "extract_air_temperature": {
+        "name": "Temperatura wywiewu"
+      },
+      "exhaust_air_temperature": {
+        "name": "Temperatura wyrzutni"
+      },
+      "manual_speed_setpoint": {
+        "name": "Nastawa prędkości ręcznej"
+      },
+      "temperature_setpoint": {
+        "name": "Nastawa temperatury"
+      },
+      "bypass_setpoint": {
+        "name": "Nastawa bypassu"
+      },
+      "speed_mode": {
+        "name": "Rejestr trybu prędkości"
+      },
+      "bypass_mode_raw": {
+        "name": "Rejestr trybu bypassu"
+      },
+      "bypass_position": {
+        "name": "Raportowane otwarcie bypassu"
+      },
+      "supply_fan_output": {
+        "name": "Wysterowanie nawiewu"
+      },
+      "extract_fan_output": {
+        "name": "Wysterowanie wywiewu"
+      },
+      "heater_control_signal": {
+        "name": "Sygnał sterowania nagrzewnicą"
+      },
+      "filter_status": {
+        "name": "Stan filtrów",
+        "state": {
+          "clean": "Czyste",
+          "supply": "Filtr nawiewu",
+          "extract": "Filtr wywiewu",
+          "both_or_timer": "Oba filtry lub upłynął czas wymiany"
+        }
+      },
+      "filter_time_remaining": {
+        "name": "Czas do wymiany filtrów"
+      },
+      "operating_time": {
+        "name": "Czas pracy"
+      },
+      "timer_time_remaining": {
+        "name": "Pozostały czas timera"
+      },
+      "alarm_status": {
+        "name": "Stan alarmów",
+        "state": {
+          "none": "Brak alarmów",
+          "alarm": "Alarm",
+          "warning": "Ostrzeżenie"
+        }
+      },
+      "active_alarm": {
+        "name": "Aktywny alarm",
+        "state": {
+          "none": "Brak alarmów",
+          "code_0": "Usterka wentylatora nawiewu",
+          "code_1": "Usterka wentylatora wywiewu",
+          "code_2": "Brak czujnika temperatury czerpni",
+          "code_3": "Zwarcie czujnika temperatury czerpni",
+          "code_4": "Brak czujnika temperatury nawiewu",
+          "code_5": "Zwarcie czujnika temperatury nawiewu",
+          "code_6": "Brak czujnika temperatury wywiewu",
+          "code_7": "Zwarcie czujnika temperatury wywiewu",
+          "code_8": "Brak czujnika temperatury wyrzutni",
+          "code_9": "Zwarcie czujnika temperatury wyrzutni",
+          "code_10": "Zadziałanie termostatu nagrzewnicy wstępnej",
+          "code_11": "Zadziałanie termostatu nagrzewnicy głównej",
+          "code_12": "Nieskuteczna ochrona przed mrozem przez nagrzewnicę wstępną",
+          "code_13": "Brak głównego czujnika wilgotności",
+          "code_14": "Brak głównego czujnika CO₂",
+          "code_15": "Brak głównego czujnika PM2.5",
+          "code_16": "Brak głównego czujnika LZO",
+          "code_17": "Brak zewnętrznego czujnika wilgotności",
+          "code_18": "Brak zewnętrznego czujnika CO₂",
+          "code_19": "Brak zewnętrznego czujnika PM2.5",
+          "code_20": "Brak zewnętrznego czujnika LZO",
+          "code_21": "Brak odczytu temperatury pomieszczenia",
+          "code_22": "Ryzyko obmarzania wymiennika",
+          "code_23": "Niskie napięcie baterii zegara",
+          "code_24": "Wymagana wymiana filtra nawiewu",
+          "code_25": "Aktywny alarm pożarowy",
+          "code_26": "Zbyt niska temperatura nawiewu",
+          "code_27": "Brak czujnika temperatury wody powrotnej",
+          "code_28": "Zwarcie czujnika temperatury wody powrotnej",
+          "code_29": "Wymagana wymiana filtra wywiewu",
+          "code_30": "Brak ciśnienia wody",
+          "code_31": "Brak przepływu wody",
+          "code_32": "Zbyt niska temperatura wody powrotnej",
+          "code_33": "Nieskuteczna ochrona przed mrozem przez wentylator",
+          "code_34": "Nieskuteczna ochrona przed mrozem przez bypass",
+          "code_35": "Wyłączona ochrona przed obmarzaniem",
+          "code_36": "Nagrzewnica główna w trybie ręcznym",
+          "code_37": "Chłodnica w trybie ręcznym",
+          "code_38": "Bypass w trybie ręcznym",
+          "code_39": "Wirnik w trybie ręcznym",
+          "code_40": "Upłynął czas wymiany filtrów",
+          "code_41": "Nieprawidłowa praca wirnika",
+          "code_42": "Nagrzewnica wstępna w trybie ręcznym",
+          "code_43": "Przekroczony czas wstępnego ogrzewania wody",
+          "code_44": "Ochrona przed mrozem przełączona na wentylator",
+          "code_45": "Zablokowany tryb Kominek",
+          "code_46": "Alarm 46",
+          "code_47": "Alarm 47",
+          "code_48": "Alarm 48",
+          "code_49": "Alarm 49",
+          "code_50": "Alarm 50",
+          "code_51": "Alarm 51",
+          "code_52": "Alarm 52"
+        }
+      },
+      "internal_humidity": {
+        "name": "Wilgotność z czujnika głównego"
+      },
+      "external_humidity": {
+        "name": "Wilgotność z czujnika zewnętrznego"
+      },
+      "internal_co2": {
+        "name": "CO₂ z czujnika głównego"
+      },
+      "external_co2": {
+        "name": "CO₂ z czujnika zewnętrznego"
+      },
+      "internal_pm25": {
+        "name": "PM2.5 z czujnika głównego"
+      },
+      "external_pm25": {
+        "name": "PM2.5 z czujnika zewnętrznego"
+      },
+      "internal_voc": {
+        "name": "LZO z czujnika głównego"
+      },
+      "external_voc": {
+        "name": "LZO z czujnika zewnętrznego"
+      },
+      "supply_airflow": {
+        "name": "Przepływ nawiewu"
+      },
+      "extract_airflow": {
+        "name": "Przepływ wywiewu"
+      },
+      "supply_pressure": {
+        "name": "Ciśnienie w kanale nawiewnym"
+      },
+      "extract_pressure": {
+        "name": "Ciśnienie w kanale wywiewnym"
+      },
+      "supply_fan_speed": {
+        "name": "Obroty wentylatora nawiewu"
+      },
+      "extract_fan_speed": {
+        "name": "Obroty wentylatora wywiewu"
+      },
+      "external_temperature": {
+        "name": "Temperatura z czujnika zewnętrznego"
+      },
+      "after_preheater_temperature": {
+        "name": "Temperatura za nagrzewnicą wstępną"
+      },
+      "before_reheater_temperature": {
+        "name": "Temperatura przed nagrzewnicą wtórną"
+      }
+    }
+  }
+}

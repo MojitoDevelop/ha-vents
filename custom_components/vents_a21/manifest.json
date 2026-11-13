@@ -1,0 +1,13 @@
+{
+  "domain": "vents_a21",
+  "name": "Vents",
+  "codeowners": ["@MojitoDevelop"],
+  "config_flow": true,
+  "documentation": "https://github.com/MojitoDevelop/ha-vents",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/MojitoDevelop/ha-vents/issues",
+  "loggers": ["pymodbus"],
+  "requirements": ["pymodbus==3.13.1"],
+  "version": "0.1.0"
+}
