@@ -96,6 +96,7 @@ class VentsClient:
         if not self._client.connected:
             if not await self._client.connect():
                 raise VentsError("Cannot connect to the Modbus TCP device")
+            self._extensions_supported = None
             if self.connect_delay:
                 await asyncio.sleep(self.connect_delay)
 

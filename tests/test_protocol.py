@@ -78,6 +78,18 @@ async def test_wrong_controller_is_rejected(peer):
         await client.async_close()
 
 
+async def test_reconnect_rechecks_status_extensions(peer):
+    peer.extension_supported = False
+    client = VentsClient("127.0.0.1", peer.port, 1, connect_delay=0)
+    try:
+        assert 51 not in (await client.async_read()).inputs
+        await client.async_close()
+        peer.extension_supported = True
+        assert (await client.async_read()).inputs[51] == 25
+    finally:
+        await client.async_close()
+
+
 @pytest.mark.parametrize(
     "failure", ["reject_write", "drop_write_reply", "wrong_write_ack"]
 )
